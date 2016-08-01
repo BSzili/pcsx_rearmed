@@ -8,6 +8,7 @@ enum builtint_plugins_e {
 	PLUGIN_CDR,
 	PLUGIN_PAD,
 	PLUGIN_CDRCIMG,
+	PLUGIN_CDROM,
 };
 
 void *plugin_link(enum builtint_plugins_e id, const char *sym);

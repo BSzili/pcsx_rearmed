@@ -134,6 +134,10 @@ endif
 # cdrcimg
 OBJS += plugins/cdrcimg/cdrcimg.o
 
+# dfcdrom
+OBJS += plugins/dfcdrom/cdr.o
+OBJS += plugins/dfcdrom/cfg.o
+
 # dfinput
 OBJS += plugins/dfinput/main.o plugins/dfinput/pad.o plugins/dfinput/guncon.o
 

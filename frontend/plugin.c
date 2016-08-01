@@ -14,6 +14,7 @@
 #include "psemu_plugin_defs.h"
 #include "../libpcsxcore/system.h"
 #include "../plugins/cdrcimg/cdrcimg.h"
+#include "../plugins/dfcdrom/dfcdrom.h"
 
 #ifndef _WIN32
 #define CALLBACK
@@ -199,6 +200,9 @@ void *plugin_link(enum builtint_plugins_e id, const char *sym)
 
 	if (id == PLUGIN_CDRCIMG)
 		return cdrcimg_get_sym(sym);
+
+	if (id == PLUGIN_CDROM)
+		return dfcdrom_get_sym(sym);
 
 	for (i = 0; i < ARRAY_SIZE(plugin_funcs); i++) {
 		if (id != plugin_funcs[i].id)

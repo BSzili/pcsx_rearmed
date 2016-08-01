@@ -25,6 +25,7 @@
 #include "../libpcsxcore/cheat.h"
 #include "../libpcsxcore/new_dynarec/new_dynarec.h"
 #include "../plugins/cdrcimg/cdrcimg.h"
+#include "../plugins/dfcdrom/dfcdrom.h"
 #include "../plugins/dfsound/spu_config.h"
 #include "arm_features.h"
 #include "revision.h"
@@ -94,6 +95,10 @@ void set_cd_image(const char *fname)
 		SetIsoFile(NULL);
 		cdrcimg_set_fname(fname);
 		strcpy(Config.Cdr, "builtin_cdrcimg");
+	} else if (dfcdrom_path_is_cd(fname)) {
+		SetIsoFile(NULL);
+		dfcdrom_set_fname(fname);
+		strcpy(Config.Cdr, "builtin_cdrom");
 	} else {
 		SetIsoFile(fname);
 		strcpy(Config.Cdr, "builtin_cdr");
@@ -964,12 +969,12 @@ void ClosePlugins() {
 /* we hook statically linked plugins here */
 static const char *builtin_plugins[] = {
 	"builtin_gpu", "builtin_spu", "builtin_cdr", "builtin_pad",
-	"builtin_cdrcimg",
+	"builtin_cdrcimg", "builtin_cdrom"
 };
 
 static const int builtin_plugin_ids[] = {
 	PLUGIN_GPU, PLUGIN_SPU, PLUGIN_CDR, PLUGIN_PAD,
-	PLUGIN_CDRCIMG,
+	PLUGIN_CDRCIMG, PLUGIN_CDROM
 };
 
 void *SysLoadLibrary(const char *lib) {
