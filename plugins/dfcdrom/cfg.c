@@ -43,8 +43,8 @@ void LoadConf() {
 
 	/* Set default values */
 	//strcpy(CdromDev, DEV_DEF);
-	ReadMode = THREADED;
-	//ReadMode = NORMAL;
+	//ReadMode = THREADED;
+	ReadMode = NORMAL;
 	UseSubQ = 0;
 	CacheSize = 64;
 	CdrSpeed = 0;
