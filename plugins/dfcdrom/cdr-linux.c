@@ -72,7 +72,7 @@ static long CDRshutdown(void) {
 
 static long CDRopen(void) {
 	char spindown;
-fprintf(stderr, "CDRopen '%s'\n", CdromDev);
+
 	LoadConf();
 
 	if (cdHandle > 0)
@@ -153,6 +153,8 @@ static long CDRclose(void) {
 	if (ReadMode == THREADED) {
 		free(cdcache);
 	}
+
+	SaveConf();
 
 	return 0;
 }
